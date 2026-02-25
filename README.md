@@ -1,300 +1,216 @@
+# 🧪 Quantum Fragility Lab – Interactive 3D Quantum Simulator & Game
 
+Quantum Fragility Lab is an interactive web-based quantum visualization platform that helps users understand how quantum states behave, evolve, and degrade in real-world environments.
 
-# 🧪 Quantum Fragility Lab
+Instead of heavy equations, the system uses visual simulation with Bloch spheres, circuits, and noise effects to demonstrate quantum fragility intuitively.
 
-### Interactive 3D Bloch Sphere & Quantum Circuit Simulator with Noise and Decoherence
-
----
-
-# 🚀 Overview
-
-Quantum Fragility Lab is an interactive visual simulator that demonstrates how quantum states evolve, degrade, and collapse under real-world noise and environmental effects.
-
-Instead of explaining quantum computing with complex equations, this tool allows users to **see and interact with quantum behavior directly** using a 3D Bloch sphere and circuit builder.
-
-Users can apply quantum gates, build circuits, introduce temperature-based noise, and observe how quantum states lose coherence over time.
+The platform also includes a game mode where users solve qubit manipulation challenges by applying correct quantum gates.
 
 ---
 
-# 🎯 Problem
+# 🚀 Features
 
-Quantum computing is usually taught using ideal, noise-free models.
-However, real quantum systems are extremely fragile.
+## 🧿 3D Bloch Sphere Visualization
 
-Environmental interactions such as temperature and noise cause:
-
-* decoherence
-* loss of superposition
-* state instability
-* computation errors
-
-Most existing tools either:
-
-* assume perfect quantum states
-* focus only on mathematics
-* or hide physical effects
-
-So learners struggle to understand **why real quantum computers fail**.
+* Real-time Bloch sphere for each qubit
+* Vector tilts according to applied gates
+* Smooth animated transitions
+* Shows quantum state direction and purity
 
 ---
 
-# 💡 Solution
+## 🔗 Quantum Circuit Builder
 
-Quantum Fragility Lab provides a visual and interactive environment where users can:
+* Click gates to add to circuit timeline
+* Supports single-qubit and two-qubit gates
+* Gate playback animation step-by-step
+* Undo and remove gates interactively
 
-* apply quantum gates
-* build circuits
-* simulate temperature-dependent noise
-* observe decoherence visually
-* measure quantum outcomes
-* see Bloch sphere evolution in real time
+Supported gates:
 
-As noise increases, the Bloch vector shrinks and drifts inside the sphere, showing loss of coherence — exactly how real qubits behave.
-
----
-
-# 🧠 How It Works
-
-The simulator follows real quantum mechanics principles but simplifies them for visual understanding.
-
-### 1. Quantum State Representation
-
-The qubit state is stored as a complex state vector:
-
-|ψ⟩ = α|0⟩ + β|1⟩
+* X, Y, Z
+* H (Hadamard)
+* S, T phase gates
+* Rotation gates Rx, Ry, Rz
+* CNOT, CZ, SWAP
 
 ---
 
-### 2. Gate Operations
+## 🌡️ Noise & Temperature Simulation
 
-When a gate is applied:
+Simulates real-world quantum fragility.
 
-* a matrix operation modifies the quantum state
-* the new state is computed
-* the Bloch vector is recalculated
+Controls:
 
----
+* Temperature slider
+* Extra depolarizing noise
+* Fidelity display
 
-### 3. Bloch Sphere Mapping
+Effect:
 
-The quantum state is converted to Bloch coordinates:
-
-x = 2Re(ρ01)
-y = −2Im(ρ01)
-z = ρ00 − ρ11
-
-This gives the direction of the Bloch vector.
+* Bloch vector shrinks inward
+* Purity decreases
+* Decoherence visualized
 
 ---
 
-### 4. 3D Animation
+## 📊 Measurement & Statistics
 
-The Bloch arrow smoothly tilts toward the new direction using Three.js animation interpolation.
-
----
-
-### 5. Noise & Fragility Simulation
-
-Temperature and noise sliders introduce decoherence:
-
-* amplitude damping → state moves toward |0⟩
-* phase damping → superposition shrinks
-* depolarizing noise → state moves toward center
-
-This makes the Bloch vector shrink inside the sphere.
-
----
-
-### 6. Measurement
-
-When measured:
-
-* probabilistic collapse occurs
-* results follow quantum probabilities
-* statistics shown in histogram
-
----
-
-# ✨ Key Features
-
-### 🧊 Temperature-Based Noise Simulation
-
-Realistic fidelity loss based on temperature (15 mK → 300 K)
-
----
-
-### 🎯 3D Bloch Sphere Visualization
-
-Interactive, rotatable, real-time state evolution
-
----
-
-### 🧩 Quantum Circuit Builder
-
-Add gates and build multi-step quantum circuits
-
----
-
-### ⚛️ Multiple Quantum Gates
-
-X, Y, Z, H, S, T, RX, RY, RZ, CNOT, CZ, SWAP
-
----
-
-### 📉 Decoherence Visualization
-
-Bloch vector shrinks as noise increases
-
----
-
-### 📊 Measurement Statistics
-
-Multi-shot measurement histogram
-
----
-
-### 🧮 State Information Panel
+* Run multiple measurement shots
+* Probability histogram of outcomes
+* Correlation indicator
+* State vector display
 
 Shows:
-
-* state vector amplitudes
-* probabilities
-* Bloch coordinates
-* purity
-* expectation values
+|ψ⟩ = α|00⟩ + β|01⟩ + γ|10⟩ + δ|11⟩
 
 ---
 
-### 🌡 Temperature & Fidelity Model
+# 🎮 NEW: Quantum Game Mode – “Qubit Flip”
 
-Shows real-world qubit degradation vs temperature
+The simulator now includes an interactive challenge game to learn quantum gates through puzzles.
+
+## Game Concept
+
+Each level gives a target qubit state.
+The player must apply correct quantum gates to reach that state.
+
+Example tasks:
+
+* Flip qubit from |0⟩ → |1⟩
+* Create superposition
+* Entangle qubits
+* Match Bloch vector direction
+
+## Game Features
+
+* Levels with increasing difficulty
+* Score and progress tracking
+* Visual feedback of correctness
+* Bloch sphere updates after each move
+* Educational hints
+
+Goal:
+Learn quantum operations through interaction instead of theory.
 
 ---
 
-### 🎬 Circuit Playback Animation
+# 🧠 How It Works (Concept)
 
-Step-by-step gate evolution visualization
+1. Qubit state stored as quantum state vector
+2. Gates apply matrix transformations
+3. Bloch vector computed from density matrix
+4. Noise model reduces coherence
+5. 3D arrow updates direction & length
+6. Circuit playback animates evolution
 
----
+So users can visually see:
 
-# 🏗 Architecture
-
-User Input
-→ Circuit Builder
-→ Quantum State Engine
-→ Density Matrix
-→ Bloch Coordinates
-→ Three.js Renderer
-→ Visual Bloch Sphere
-
-Noise Engine runs continuously during state evolution.
+gate → state change → decoherence → measurement
 
 ---
 
-# 🛠 Technologies Used
+# 🏗️ Tech Stack
 
-* React
+Frontend:
+
+* React.js
 * Three.js
-* WebGL
+* Canvas API
 * Recharts
-* JavaScript
-* Quantum state math simulation
+
+Quantum Engine:
+
+* Custom state-vector simulator
+* Gate matrices
+* Noise model
+
+Rendering:
+
+* 3D Bloch spheres
+* Vector animation
+* Circuit wire diagram
 
 ---
 
-# 🎓 Educational Value
+# 🎯 Purpose
 
-This tool helps users understand:
+Quantum computing is fragile in reality.
+Most tools show ideal behavior.
 
-* superposition
-* quantum gates
-* decoherence
-* measurement collapse
-* noise effects
-* quantum fragility
+This platform demonstrates:
 
-without needing advanced mathematics.
+* Decoherence
+* Noise impact
+* State degradation
+* Measurement uncertainty
+
+in a visual and interactive way.
 
 ---
 
-# 🌍 Sustainable Development Goals
+# 👨‍🎓 Educational Value
 
-This project supports:
+Helps learners understand:
 
-**SDG 4 — Quality Education**
-Makes advanced quantum computing concepts accessible visually.
+* Bloch sphere representation
+* Quantum gates
+* Superposition
+* Entanglement
+* Decoherence
+* Measurement collapse
 
-**SDG 9 — Industry, Innovation & Infrastructure**
-Helps learners understand next-generation computing technology.
+without equations.
 
-**SDG 8 — Future Workforce Skills**
-Supports training in emerging quantum technologies.
+---
+
+# 🌍 Relevance to Real Quantum Systems
+
+Real quantum hardware suffers from:
+
+* Temperature noise
+* Environmental interaction
+* State decay
+
+The simulator models these effects visually, helping users understand why quantum computers are difficult to build.
+
+---
+
+# 🎮 Why Game Mode Matters
+
+Learning quantum mechanics is abstract.
+
+Game mode provides:
+
+* Hands-on experimentation
+* Goal-based learning
+* Intuitive understanding
+* Engagement & retention
+
+It turns quantum physics into an interactive puzzle experience.
 
 ---
 
 # 🧪 Example Use Cases
 
-* quantum computing education
-* research visualization
-* classroom demonstrations
-* hackathon simulations
-* physics learning tools
-
----
-
-# 🧩 Example Circuits
-
-Bell State
-H → CNOT
-
-Superposition
-H
-
-Rotation
-RX(θ)
-
-Teleportation Demo
-H → CNOT → H
-
----
-
-# 📈 Why This Project Is Unique
-
-Most quantum simulators:
-
-* assume perfect qubits
-* ignore noise
-* focus on math
-
-Quantum Fragility Lab focuses on:
-
-* decoherence
-* instability
-* environmental effects
-* real-world fragility
-
-This makes it closer to actual quantum hardware behavior.
-
----
-
-# 🚀 Future Improvements
-
-* 2-qubit entanglement visualization links
-* noise type selection
-* density matrix ellipsoid rendering
-* multi-qubit expansion
-* cloud quantum backend integration
-
----
-
-# 👨‍💻 Author
-
-Developed as an interactive quantum visualization project for educational and hackathon use.
+* Quantum education
+* Classroom demonstrations
+* Hackathon showcase
+* Research visualization
+* Interactive tutorials
 
 ---
 
 # 🏁 Conclusion
 
-Quantum Fragility Lab transforms abstract quantum mechanics into an intuitive visual experience.
-It demonstrates how quantum states evolve, degrade, and collapse in realistic environments — helping users understand the fundamental challenge of quantum computing: fragility.
+Quantum Fragility Lab combines:
 
+3D visualization
+Circuit simulation
+Noise modeling
+Interactive gameplay
+
+to create a complete intuitive quantum learning platform.
+
+It demonstrates not just how quantum systems work —
+but why they fail in reality.
